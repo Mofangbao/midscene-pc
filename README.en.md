@@ -13,6 +13,8 @@ Control desktop apps and windows with Midscene. This package provides a PC devic
 
 ## Installation
 
+> Due to native library dependencies that require local compilation, installation may take some time.
+
 ### Integrate as a dependency into your own project
 
 `pnpm add midscene-pc`
@@ -142,6 +144,15 @@ async function main() {
 
 main().catch(console.error);
 ```
+
+### Remote Server Installation Guide
+
+```bash
+docker run -it -d --rm --name=midscene-ubuntu-desktop -p 10081:10081 -p 10089:10089 -p 3333:3333 --tmpfs /run --tmpfs /run/lock --tmpfs /tmp --cap-add SYS_BOOT --cap-add SYS_ADMIN -v /sys/fs/cgroup:/sys/fs/cgroup:rw -v ./data:/mnt/data --cgroupns=host --privileged --shm-size=4g -e L=zh_CN -e SSH_PASS=midscene-pc -e VNC_PASS=midscene-pc -e VNC_PASS_RO=midscene_pc ppagent/midscene-ubuntu-desktop:latest
+```
+
+The service starts on port `3333` by default.
+For more details, refer to [midscene-pc-docker](https://github.com/mofangbao/midscene-pc-docker)
 
 ## Run Project Examples
 
