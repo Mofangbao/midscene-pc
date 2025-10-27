@@ -167,6 +167,8 @@ main().catch(console.error);
 
 ### 🐳 远程服务器安装指南
 
+![remote server](./main.jpg)
+
 ```bash
 docker run -it -d --rm --name=midscene-ubuntu-desktop \
   -p 10081:10081 -p 10089:10089 -p 3333:3333 \
