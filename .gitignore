@@ -1,0 +1,42 @@
+# Node & TypeScript
+node_modules/
+dist/
+coverage/
+.tmp/
+tmp/
+.temp/
+.cache/
+.trae/
+
+# Midscene demo outputs
+output/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# IDE/editor
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# TypeScript build artifacts
+*.tsbuildinfo
+# Midscene.js dump files
+midscene_run/dump
+midscene_run/report
+midscene_run/tmp
+midscene_run/log
+midscene_run

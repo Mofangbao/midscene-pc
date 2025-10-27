@@ -1,0 +1,51 @@
+{
+    "name": "midscene-pc",
+    "version": "1.0.4",
+    "description": "pc automation agent for midscene.js",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "type": "module",
+    "bin": {
+        "midscene-pc": "dist/cli.js"
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "README.en.md"
+    ],
+    "keywords": [
+        "midscene",
+        "midscene desktop",
+        "midscene pc",
+        "automation"
+    ],
+    "scripts": {
+        "build": "pnpm run build:js && pnpm run build:types",
+        "build:js": "esbuild ./src/**/*.ts --platform=node --format=esm --outdir=./dist",
+        "build:types": "tsc -p tsconfig.build.json",
+        "prepublishOnly": "pnpm run build",
+        "demo": "tsx demo/run.ts",
+        "dev": "tsx watch demo/run.ts",
+        "clean": "rm -rf dist"
+    },
+    "author": "mofangbao",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/express": "^5.0.4",
+        "@types/node": "^24.3.1",
+        "dotenv": "^16.6.1",
+        "esbuild": "^0.25.9",
+        "tsx": "4.20.1",
+        "typescript": "^5.9.3"
+    },
+    "dependencies": {
+        "@midscene/core": "^0.30.4",
+        "@nut-tree-fork/nut-js": "^4.2.6",
+        "express": "^5.1.0",
+        "gui": "^0.15.6",
+        "jimp": "^1.6.0",
+        "node-screenshots": "^0.2.1",
+        "winston": "^3.18.3",
+        "winston-daily-rotate-file": "^5.0.0"
+    }
+}
