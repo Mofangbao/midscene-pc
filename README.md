@@ -19,11 +19,11 @@ English README: [README.en.md](./README.en.md)
 
 ### 播放音乐
 
-[![播放音乐](https://github.com/user-attachments/assets/24ca286a-f581-42f5-a9ba-5b773017600a)]
+[![播放音乐](https://github.com/user-attachments/assets/24ca286a-f581-42f5-a9ba-5b773017600a)](https://github.com/user-attachments/assets/24ca286a-f581-42f5-a9ba-5b773017600a)
 
 ### 搜索天气发送到聊天
 
-[![发送消息](https://github.com/user-attachments/assets/5860b901-6e9b-4f90-a5a1-040b20dbd541)]
+[![发送消息](https://github.com/user-attachments/assets/5860b901-6e9b-4f90-a5a1-040b20dbd541)](https://github.com/user-attachments/assets/5860b901-6e9b-4f90-a5a1-040b20dbd541)
 
 ## 🚀 安装
 
