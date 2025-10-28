@@ -1,4 +1,3 @@
-import { Key } from "@nut-tree/nut-js";
 import { PCAgent } from "../src";
 import PCDevice from "../src/pc.device";
 import { wechatInstruct } from "./instruct";
@@ -7,11 +6,6 @@ import { IPCService } from "../src";
 export async function writeFile(pcService: IPCService) {
   const pcDevice = new PCDevice({
     pcService,
-    launchOptions: {
-      screenArea: {
-        moniterIdx: 0,
-      },
-    },
     clickBeforeInput: true,
   });
   await pcDevice.launch();
