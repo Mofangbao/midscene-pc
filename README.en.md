@@ -15,6 +15,16 @@ Control desktop apps and windows with Midscene. This package provides a PC devic
 
 ---
 
+## 📺 Demos
+
+### Play Music
+
+[![播放音乐](https://github.com/user-attachments/assets/24ca286a-f581-42f5-a9ba-5b773017600a)](https://github.com/user-attachments/assets/24ca286a-f581-42f5-a9ba-5b773017600a)
+
+### Send weather info to chat
+
+[![发送消息](https://github.com/user-attachments/assets/5860b901-6e9b-4f90-a5a1-040b20dbd541)](https://github.com/user-attachments/assets/5860b901-6e9b-4f90-a5a1-040b20dbd541)
+
 ## 🚀 Installation
 
 > **Note:** Due to native library dependencies that require local compilation, installation may take some time.
