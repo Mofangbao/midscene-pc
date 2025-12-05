@@ -25,6 +25,10 @@ English README: [README.en.md](./README.en.md)
 
 [![发送消息](https://github.com/user-attachments/assets/5860b901-6e9b-4f90-a5a1-040b20dbd541)](https://github.com/user-attachments/assets/5860b901-6e9b-4f90-a5a1-040b20dbd541)
 
+### 查看资源占用（连接到远程服务）
+
+[![远程服务](https://github.com/user-attachments/assets/c7e667ad-4ad2-41b6-8457-c34e14aa1752)](https://github.com/user-attachments/assets/c7e667ad-4ad2-41b6-8457-c34e14aa1752)
+
 ## 🚀 安装
 
 > **注意：** 由于依赖的库文件需要本地化编译，耗时可能略久。

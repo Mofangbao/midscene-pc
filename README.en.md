@@ -25,6 +25,10 @@ Control desktop apps and windows with Midscene. This package provides a PC devic
 
 [![发送消息](https://github.com/user-attachments/assets/5860b901-6e9b-4f90-a5a1-040b20dbd541)](https://github.com/user-attachments/assets/5860b901-6e9b-4f90-a5a1-040b20dbd541)
 
+### System usage monitor (from remote server)
+
+[![远程服务](https://github.com/user-attachments/assets/c7e667ad-4ad2-41b6-8457-c34e14aa1752)](https://github.com/user-attachments/assets/c7e667ad-4ad2-41b6-8457-c34e14aa1752)
+
 ## 🚀 Installation
 
 > **Note:** Due to native library dependencies that require local compilation, installation may take some time.
