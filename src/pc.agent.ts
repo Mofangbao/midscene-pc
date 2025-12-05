@@ -2,7 +2,6 @@ import { Agent, AgentOpt } from "@midscene/core";
 import PCDevice from "./pc.device.js";
 
 export interface PCAgentOptions extends AgentOpt {
-  foo: string;
 }
 
 export class PCAgent extends Agent<PCDevice> {

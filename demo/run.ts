@@ -11,6 +11,7 @@ import { simpleDescription } from "./simple";
 import { sendChatMsg } from "./send.chat.msg";
 import { playMusic } from "./play.music";
 import { remoteMonitor } from "./remote.monitor";
+import { ymlScriptDemo } from "./yml.script";
 
 const runDemo = async (pcService: IPCService) => {
   console.log(`running pc agent demo with ${pcService.name}`);
@@ -19,7 +20,8 @@ const runDemo = async (pcService: IPCService) => {
   // await writeFile(pcService);
   // await simpleDescription(pcService);
   // await playMusic(pcService);
-  await remoteMonitor();
+  // await remoteMonitor();
+  await ymlScriptDemo(pcService);
 };
 
 (async () => {

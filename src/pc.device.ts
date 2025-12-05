@@ -165,7 +165,7 @@ export default class PCDevice implements AbstractInterface {
    */
   public static MOUSE_WHEEL_TO_PIXEL = 1.6;
   private launched = false;
-  interfaceType: InterfaceType = "pc-device";
+  interfaceType: InterfaceType = "pc";
   private options: PCDeviceOptions;
   private targetFinder: ScreenTargetFinder = undefined as any;
   private outputListeners: Map<string, ((output: string) => void)[]> =
