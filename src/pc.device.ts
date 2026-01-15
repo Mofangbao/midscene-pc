@@ -1,4 +1,5 @@
 import {
+  ActionScrollParam,
   type DeviceAction,
   getMidsceneLocationSchema,
   type InterfaceType,
@@ -15,7 +16,6 @@ import {
   type ActionKeyboardPressParam,
   ActionLongPressParam,
   ActionRightClickParam,
-  ActionScrollParam,
   ActionSwipeParam,
   type ActionTapParam,
   defineAction,

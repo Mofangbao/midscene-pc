@@ -1,6 +1,6 @@
 {
     "name": "midscene-pc",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "pc automation agent for midscene.js",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -39,7 +39,7 @@
         "typescript": "^5.9.3"
     },
     "dependencies": {
-        "@midscene/core": "^0.30.4",
+        "@midscene/core": "^1.2.1",
         "@nut-tree-fork/nut-js": "^4.2.6",
         "express": "^5.1.0",
         "gui": "^0.15.6",

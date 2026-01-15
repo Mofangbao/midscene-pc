@@ -18,10 +18,10 @@ const runDemo = async (pcService: IPCService) => {
   //   await sendChatMsg(pcService);
   //   await browserUse(pcService);
   // await writeFile(pcService);
-  // await simpleDescription(pcService);
+  await simpleDescription(pcService);
   // await playMusic(pcService);
   // await remoteMonitor();
-  await ymlScriptDemo(pcService);
+  // await ymlScriptDemo(pcService);
 };
 
 (async () => {
