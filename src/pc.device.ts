@@ -1,4 +1,5 @@
 import {
+  ActionScrollParam,
   type DeviceAction,
   getMidsceneLocationSchema,
   type InterfaceType,
@@ -15,7 +16,6 @@ import {
   type ActionKeyboardPressParam,
   ActionLongPressParam,
   ActionRightClickParam,
-  ActionScrollParam,
   ActionSwipeParam,
   type ActionTapParam,
   defineAction,
@@ -41,6 +41,7 @@ import {
   PNGBuffer,
 } from "./interfaces/pc.service.interface.js";
 import "./logger.js"; // 导入日志配置
+import { straightTo } from "@nut-tree-fork/nut-js";
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -532,12 +533,8 @@ export default class PCDevice implements AbstractInterface {
         const screenPos = await this.getScreenPos(element.center);
         await this.options.pcService.mouse.setPosition(screenPos);
         await this.options.pcService.mouse.pressButton(MouseButton.LEFT);
-        await this.options.pcService.mouse.move([
-          {
-            x: param.to.center[0],
-            y: param.to.center[1],
-          },
-        ]);
+        const targetPos=await this.getScreenPos(param.to.center);
+        await this.options.pcService.mouse.move(await straightTo(targetPos));
         await this.options.pcService.mouse.releaseButton(MouseButton.LEFT);
         await sleep(PCDevice.ACTION_TRANSFORM_TIME);
       }),
