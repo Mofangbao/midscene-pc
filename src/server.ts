@@ -40,9 +40,19 @@ function serializeWindow(w: AbstractWindow) {
   };
 }
 
-export function createServer(service: IPCService = localPCService): express.Express {
+export function createServer(service: IPCService = localPCService, token?: string): express.Express {
   const app = express();
   app.use(express.json({ limit: "10mb" }));
+
+  if (token) {
+    app.use((req, res, next) => {
+      if (req.query.token !== token) {
+        res.status(401).json({ error: "Unauthorized" });
+        return;
+      }
+      next();
+    });
+  }
 
   // Health
   app.get("/health", (_req, res) => res.json({ ok: true }));
@@ -284,9 +294,10 @@ export function createServer(service: IPCService = localPCService): express.Expr
 
 export async function startServer(
   port: number = Number(process.env.PORT) || 3333,
-  host: string = process.env.HOST || "0.0.0.0"
+  host: string = process.env.HOST || "0.0.0.0",
+  token: string | undefined = process.env.TOKEN ?? process.env.MIDSCENE_PC_TOKEN
 ): Promise<{ app: express.Express; server: Server }> {
-  const app = createServer(localPCService);
+  const app = createServer(localPCService, token);
   return new Promise((resolve) => {
     const server = app.listen(port, host, () => {
       console.log(`[server] listening on http://${host}:${port}`);

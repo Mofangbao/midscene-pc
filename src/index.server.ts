@@ -7,10 +7,10 @@ let restarting = false;
 let backoffMs = 1000; // restart backoff starts at 1s, doubles up to 30s
 let restartTimer: NodeJS.Timeout | null = null;
 let hasStarted = false;
-export async function startAutoServer(port?: number, host?: string) {
+export async function startAutoServer(port?: number, host?: string, token?: string) {
   try {
     hasStarted = true;
-    const { server: srv } = await startServer(port, host);
+    const { server: srv } = await startServer(port, host, token);
     server = srv;
     backoffMs = 1000; // reset backoff on successful start
     console.log("[bootstrap] server started");

@@ -23,8 +23,8 @@ const runDemo = async (pcService: IPCService) => {
 (async () => {
     let pcService: IPCService = undefined as any;
     if (process.argv.includes("--remote")) {
-        // await startServer();
-        pcService = await createRemotePCService("http://localhost:3333");
+        await startServer(Number(process.env.PORT), process.env.HOST, process.env.TOKEN);
+        pcService = await createRemotePCService(`http://${process.env.HOST}:${process.env.PORT}`, process.env.TOKEN);
     } else {
         pcService = localPCService;
     }

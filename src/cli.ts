@@ -28,19 +28,24 @@ async function main() {
   const args = parseArgs(argv);
 
   if (args['help']) {
-    console.log(`\nUsage: npx midscene-pc [--port <port>] [--host <host>]\n\nOptions:\n  --port    覆盖环境变量 PORT，默认 3333\n  --host    覆盖环境变量 HOST，默认 0.0.0.0\n  -h, --help  显示帮助\n`);
+    console.log(`\nUsage: npx midscene-pc [--port <port>] [--host <host>] [--token <token>]\n\nOptions:\n  --port    覆盖环境变量 PORT，默认 3333\n  --host    覆盖环境变量 HOST，默认 0.0.0.0\n  --token   覆盖环境变量 TOKEN / MIDSCENE_PC_TOKEN\n  -h, --help  显示帮助\n`);
     process.exit(0);
   }
 
   const portFromArg = typeof args['port'] === 'string' ? Number(args['port']) : undefined;
   const hostFromArg = typeof args['host'] === 'string' ? String(args['host']) : undefined;
+  const tokenFromArg = typeof args['token'] === 'string' ? String(args['token']) : undefined;
 
   const port = portFromArg ?? (process.env.PORT ? Number(process.env.PORT) : 3333);
   const host = hostFromArg ?? (process.env.HOST ?? '0.0.0.0');
+  const token = tokenFromArg ?? process.env.TOKEN ?? process.env.MIDSCENE_PC_TOKEN;
 
   try {
-    await startAutoServer(port, host);
+    await startAutoServer(port, host, token);
     console.log(`[midscene-pc] 服务已启动: http://${host}:${port}`);
+    if (token) {
+      console.log(`[midscene-pc] Token check enabled. Access with ?token=${token}`);
+    }
   } catch (err) {
     console.error('[midscene-pc] 启动失败:', err);
     process.exit(1);

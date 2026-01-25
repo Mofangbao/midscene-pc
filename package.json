@@ -1,10 +1,6 @@
 {
     "name": "midscene-pc",
-<<<<<<< HEAD
-    "version": "1.0.5",
-=======
-    "version": "1.1.1",
->>>>>>> 88c1d09a5613869c672610f486106dfbd6e13e94
+    "version": "1.1.2",
     "description": "pc automation agent for midscene.js",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
