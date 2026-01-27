@@ -9,7 +9,7 @@ Control desktop apps and windows with Midscene. This package provides a PC devic
 ## 📖 Overview
 
 - Desktop-oriented Midscene device implementation (`PCDevice`).
-- Provides both local service (`localPCService`) and remote service (`createRemotePCService`) modes. Remote mode allows deploying a desktop-enabled Docker image on a server (will be open-sourced after testing), so client programs don't need to run in a desktop environment, such as running scheduled tasks on servers.
+- Provides both local service (`localPCService`) and remote service (`createRemotePCService`) modes. Remote mode allows deploying a desktop-enabled Docker image on a server ([DockerHub](https://hub.docker.com/r/ppagent/midscene-ubuntu-desktop), [Git](https://github.com/Mofangbao/midscene-pc-docker)), so client programs don't need to run in a desktop environment, such as running scheduled tasks on servers.
 - Supports multi-monitor, window enumeration and screenshots, encapsulates mouse/keyboard/clipboard operations.
 - Deep integration with `@midscene/core`'s positioning and action system.
 
@@ -50,7 +50,7 @@ npx midscene-pc@latest
 Specify port and host:
 
 ```bash
-npx midscene-pc --port 4000 --host 127.0.0.1
+npx midscene-pc --port 4000 --host 127.0.0.1 --token your-remote-service-token
 ```
 
 View help:
@@ -82,6 +82,7 @@ The project supports configuration via environment variables. You can create a `
 
 - `PORT`: Server port, default `3333`
 - `HOST`: Server host, default `0.0.0.0`
+- `TOKEN`: Service access token, default `your-remote-service-token` (when set, access with `?token=your-remote-service-token`)
 
 ### Logging Configuration
 
@@ -150,6 +151,31 @@ main().catch(console.error);
 
 ---
 
+## 🗄️ Locate Cache
+
+`PCAgent` can cache locate results locally. This is useful for stable UIs and repeated runs, reducing repeated locating latency and model calls.
+
+Enable cache by providing a cache id when creating `PCAgent` (the same id reuses the same cache data):
+
+```typescript
+const agent = new PCAgent(device, {
+  cache: { id: "my-cache" },
+});
+```
+
+Use cache by providing a stable `xpath` and setting `cacheable` in `aiLocate` / `aiTap`:
+
+```typescript
+await agent.aiTap("Click the Windows menu on the taskbar", {
+  xpath: "/taskbar/menu",
+  cacheable: true,
+});
+```
+
+Cache data is stored at `./cache/<id>` by default. If the UI / resolution / scale changes, call `agent.clearCache()` or use a new cache id. See [cache.ts](./demo/cache.ts).
+
+---
+
 ## 🌐 Remote Mode (HTTP Service Bridge)
 
 Start the service on the target machine, then drive via HTTP client:
@@ -180,6 +206,8 @@ main().catch(console.error);
 ```
 
 ### 🐳 Remote Server Installation Guide
+
+![remote server](./main.jpg)
 
 ```bash
 docker run -it -d --rm --name=midscene-ubuntu-desktop \

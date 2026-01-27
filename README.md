@@ -9,7 +9,7 @@ English README: [README.en.md](./README.en.md)
 ## 📖 简介
 
 - 面向桌面场景的 Midscene 设备实现（`PCDevice`）。
-- 提供本地服务（`localPCService`）与远程服务（`createRemotePCService`）两种模式。远程模式可以在服务器上部署一个带桌面的 docker 镜像（[DockerHub 地址](https://hub.docker.com/r/ppagent/midscene-ubuntu-desktop)），然后客户端程序就不需要在桌面环境下运行了，比如可以放到服务器上去定时运行等。
+- 提供本地服务（`localPCService`）与远程服务（`createRemotePCService`）两种模式。远程模式可以在服务器上部署一个带桌面的 docker 镜像（[DockerHub 地址](https://hub.docker.com/r/ppagent/midscene-ubuntu-desktop)，[Git地址](https://github.com/Mofangbao/midscene-pc-docker)），然后客户端程序就不需要在桌面环境下运行了，比如可以放到服务器上去定时运行等。
 - 支持多显示器、窗口枚举与截图，封装鼠标/键盘/剪贴板操作。
 - 与 `@midscene/core` 的定位与动作体系深度集成。
 
@@ -50,7 +50,7 @@ npx midscene-pc@latest
 指定端口与主机：
 
 ```bash
-npx midscene-pc --port 4000 --host 127.0.0.1
+npx midscene-pc --port 4000 --host 127.0.0.1 --token your-remote-service-token
 ```
 
 查看帮助：
@@ -82,6 +82,7 @@ npx midscene-pc --help
 
 - `PORT`: 服务端口，默认 `3333`
 - `HOST`: 服务主机，默认 `0.0.0.0`
+- `TOKEN`: 服务访问令牌，env中默认 `your-remote-service-token`（如果设置了令牌，客户端调用时需要使用?token=your-remote-service-token`）
 
 ### 日志配置
 
@@ -147,6 +148,31 @@ async function main() {
 
 main().catch(console.error);
 ```
+
+---
+
+## 🗄️ 定位缓存（Cache）
+
+`PCAgent` 支持对定位结果做本地缓存，适用于 UI 稳定、重复运行的脚本场景，可减少重复定位带来的耗时与模型调用。
+
+启用缓存：创建 `PCAgent` 时指定缓存 id（同一 id 会复用同一份缓存数据）：
+
+```typescript
+const agent = new PCAgent(device, {
+  cache: { id: "my-cache" },
+});
+```
+
+使用缓存：在需要缓存的 `aiLocate` / `aiTap` 调用中，提供稳定的 `xpath` 并开启 `cacheable`：
+
+```typescript
+await agent.aiTap("任务栏上的 Windows 菜单", {
+  xpath: "/taskbar/menu",
+  cacheable: true,
+});
+```
+
+缓存数据默认写入 `./cache/<id>`。如果 UI / 分辨率 / 缩放变化导致缓存失效，可调用 `agent.clearCache()` 或更换缓存 id。示例见 [cache.ts](./demo/cache.ts)。
 
 ---
 

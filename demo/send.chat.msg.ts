@@ -18,7 +18,7 @@ export async function sendChatMsg(pcService: IPCService) {
   });
   await pcDevice.launch();
   const pcAgent = new PCAgent(pcDevice);
-  await pcAgent.aiAction(
+  await pcAgent.ai(
     `${wechatInstruct}
     给文件传输助手发送当前系统的时间：${new Date().toLocaleString()}。
     `

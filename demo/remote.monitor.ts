@@ -13,7 +13,7 @@ export async function remoteMonitor() {
   await sleep(500);
   await pcAgent.aiTap("系统监视器");
   await sleep(1000);
-  const output = await pcAgent.aiOutput(
+  const output = await pcAgent.aiAsk(
     "按内存使用排序，找出内存占用率前三的进程，输出详细信息"
   );
   console.log(output);

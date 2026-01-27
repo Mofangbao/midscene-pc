@@ -7,6 +7,7 @@ import { sendChatMsg } from "./send.chat.msg";
 import { playMusic } from "./play.music";
 import { remoteMonitor } from "./remote.monitor";
 import { ymlScriptDemo } from "./yml.script";
+import { testCache } from "./cache";
 
 const runDemo = async (pcService: IPCService) => {
     console.log(`running pc agent demo with ${pcService.name}`);
@@ -14,10 +15,11 @@ const runDemo = async (pcService: IPCService) => {
     //   await browserUse(pcService);
     // await writeFile(pcService);
     // await simpleDragAndDrop(pcService);  执行前请修改
-    await simpleDescription(pcService);
+    // await simpleDescription(pcService);
     // await playMusic(pcService);
     // await remoteMonitor();
     // await ymlScriptDemo(pcService);
+    await testCache(pcService);
 };
 
 (async () => {
